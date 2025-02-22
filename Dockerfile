@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y \
   libxdamage1 \ 
   libxkbcommon0 \
   libasound2 \
-  libgtk-3.so.0
+  libgtk-3-0
 
 COPY pyproject.toml uv.lock .python-version ./
 
