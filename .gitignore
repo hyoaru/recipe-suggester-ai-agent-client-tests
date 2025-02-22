@@ -15,3 +15,5 @@ wheels/
 app.log
 app.*.log
 
+# Directories
+results/

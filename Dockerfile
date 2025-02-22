@@ -1,31 +1,12 @@
-FROM python:3.12-bookworm
+FROM ghcr.io/marketsquare/robotframework-browser/rfbrowser-stable:19.3.1
 
-WORKDIR /tests
-
-RUN apt-get update && apt-get install -y \
-  curl \
-  bash \
-  git \
-  nodejs \
-  npm \
-  libcups2 \
-  libnss3 \  
-  libnspr4 \
-  libatk1.0-0 \
-  libatk-bridge2.0-0 \
-  libatspi2.0-0 \
-  libxdamage1 \ 
-  libxkbcommon0 \
-  libasound2 \
-  libgtk-3-0
+WORKDIR /app
 
 COPY pyproject.toml uv.lock .python-version ./
 
 RUN pip install uv && uv sync
 RUN uv pip freeze > requirements.txt
 RUN pip install -r requirements.txt
-RUN rfbrowser init 
 
-RUN mkdir -p /results
-
-CMD ["bash", "run_tests.sh"]
+USER root
+RUN mkdir -p results/
