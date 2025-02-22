@@ -1,0 +1,665 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.12.3 on linux)" generated="2025-02-22T17:43:58.709463" rpa="false" schemaversion="5">
+<suite id="s1" name="Suites" source="/media/jiji/eb18153f-9be1-4f06-9fa8-cf63a398e6141/Development/web/recipe-suggester-ai-agent/client-tests/tests/suites">
+<suite id="s1-s1" name="Recipe Suggestions" source="/media/jiji/eb18153f-9be1-4f06-9fa8-cf63a398e6141/Development/web/recipe-suggester-ai-agent/client-tests/tests/suites/recipe_suggestions.robot">
+<kw name="Initialize" type="SETUP">
+<kw name="InitializeGlobalVariables" owner="base">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-02-22T17:43:58.834543" level="INFO">Setting up suite...</msg>
+<arg>Setting up suite...</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-02-22T17:43:58.834409" elapsed="0.000194"/>
+</kw>
+<kw name="Get Environment Variable" owner="OperatingSystem">
+<msg time="2025-02-22T17:43:58.834896" level="INFO">${client_base_url} = http://localhost:8001</msg>
+<var>${client_base_url}</var>
+<arg>CLIENT_BASE_URL</arg>
+<doc>Returns the value of an environment variable with the given name.</doc>
+<status status="PASS" start="2025-02-22T17:43:58.834724" elapsed="0.000198"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-02-22T17:43:58.835222" level="INFO">${GLOBAL_CLIENT_BASE_URL} = http://localhost:8001</msg>
+<arg>${GLOBAL_CLIENT_BASE_URL}</arg>
+<arg>${client_base_url}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-02-22T17:43:58.835033" elapsed="0.000227"/>
+</kw>
+<status status="PASS" start="2025-02-22T17:43:58.833912" elapsed="0.001410"/>
+</kw>
+<status status="PASS" start="2025-02-22T17:43:58.833603" elapsed="0.001771"/>
+</kw>
+<test id="s1-s1-t1" name="Add Ingredients and Generate Suggestions" line="20">
+<kw name="Open Recipe Suggestions Page" owner="recipe_suggestions_resources">
+<kw name="New Browser" owner="Browser">
+<msg time="2025-02-22T17:43:58.836620" level="INFO">{"browser": "chromium", "headless": true, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "/media/jiji/eb18153f-9be1-4f06-9fa8-cf63a398e6141/Development/web/recipe-suggester-ai-agent/client-tests/results/browser/traces/temp/1fcf8d82-118a-4a8d-aa1a-2ff2fa139416"}</msg>
+<msg time="2025-02-22T17:43:58.840219" level="INFO">Starting Browser process /media/jiji/eb18153f-9be1-4f06-9fa8-cf63a398e6141/Development/web/recipe-suggester-ai-agent/client-tests/.venv/lib/python3.12/site-packages/Browser/wrapper/index.js using port 52717</msg>
+<msg time="2025-02-22T17:43:58.840337" level="INFO">Node startup parameters: ['node', '/media/jiji/eb18153f-9be1-4f06-9fa8-cf63a398e6141/Development/web/recipe-suggester-ai-agent/client-tests/.venv/lib/python3.12/site-packages/Browser/wrapper/index.js', '52717']</msg>
+<msg time="2025-02-22T17:43:59.245050" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":true,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"/media/jiji/eb18153f-9be1-4f06-9fa8-cf63a398e6141/Development/web/recipe-suggester-ai-agent/client-tests/results/browser/traces/temp/1fcf8d82-118a-4a8d-aa1a-2ff2fa139416"}</msg>
+<arg>chromium</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<status status="PASS" start="2025-02-22T17:43:58.835995" elapsed="0.409267"/>
+</kw>
+<kw name="New Page" owner="Browser">
+<msg time="2025-02-22T17:43:59.364069" level="INFO">Successfully initialized new page object and opened url: http://localhost:8001/</msg>
+<msg time="2025-02-22T17:43:59.364142" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<arg>${GLOBAL_CLIENT_BASE_URL}/</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2025-02-22T17:43:59.245498" elapsed="0.118778"/>
+</kw>
+<status status="PASS" start="2025-02-22T17:43:58.835756" elapsed="0.528621"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-02-22T17:43:59.364724" level="INFO">Inputing ingredients...</msg>
+<arg>Inputing ingredients...</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-02-22T17:43:59.364551" elapsed="0.000236"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2025-02-22T17:43:59.365156" level="INFO">@{ingredients} = [ egg | buttter ]</msg>
+<var>@{ingredients}</var>
+<arg>egg</arg>
+<arg>buttter</arg>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2025-02-22T17:43:59.364950" elapsed="0.000235"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Fill Text" owner="Browser">
+<msg time="2025-02-22T17:43:59.366365" level="INFO">Fills the text 'egg' in the given field.</msg>
+<arg>${SUITE_LOCATOR_INGREDIENTS_INPUT}</arg>
+<arg>${ingredient}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2025-02-22T17:43:59.365781" elapsed="0.849372"/>
+</kw>
+<kw name="Press Keys" owner="Browser">
+<arg>${SUITE_LOCATOR_INGREDIENTS_INPUT}</arg>
+<arg>Space</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given key combination into element found by ``selector``.</doc>
+<status status="PASS" start="2025-02-22T17:44:00.215403" elapsed="0.024758"/>
+</kw>
+<var name="${ingredient}">egg</var>
+<status status="PASS" start="2025-02-22T17:43:59.365571" elapsed="0.874764"/>
+</iter>
+<iter>
+<kw name="Fill Text" owner="Browser">
+<msg time="2025-02-22T17:44:00.241868" level="INFO">Fills the text 'buttter' in the given field.</msg>
+<arg>${SUITE_LOCATOR_INGREDIENTS_INPUT}</arg>
+<arg>${ingredient}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2025-02-22T17:44:00.240960" elapsed="0.015922"/>
+</kw>
+<kw name="Press Keys" owner="Browser">
+<arg>${SUITE_LOCATOR_INGREDIENTS_INPUT}</arg>
+<arg>Space</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given key combination into element found by ``selector``.</doc>
+<status status="PASS" start="2025-02-22T17:44:00.257112" elapsed="0.012298"/>
+</kw>
+<var name="${ingredient}">buttter</var>
+<status status="PASS" start="2025-02-22T17:44:00.240622" elapsed="0.028897"/>
+</iter>
+<var>${ingredient}</var>
+<value>@{ingredients}</value>
+<status status="PASS" start="2025-02-22T17:43:59.365293" elapsed="0.904291"/>
+</for>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-02-22T17:44:00.270000" level="INFO">Ingredients entered.</msg>
+<arg>Ingredients entered.</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-02-22T17:44:00.269800" elapsed="0.000262"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-02-22T17:44:00.270372" level="INFO">Generating recipe suggestions...</msg>
+<arg>Generating recipe suggestions...</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-02-22T17:44:00.270225" elapsed="0.000195"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2025-02-22T17:44:00.270992" level="INFO">Clicks the element '//*[local-name()='svg' and @class='lucide lucide-sparkles']/parent::button'.</msg>
+<arg>${SUITE_LOCATOR_SUGGEST_RECIPE_BUTTON}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-02-22T17:44:00.270556" elapsed="0.036656"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-02-22T17:44:00.307837" level="INFO">Generated recipe suggestions.</msg>
+<arg>Generated recipe suggestions.</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-02-22T17:44:00.307545" elapsed="0.000373"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-02-22T17:44:00.308337" level="INFO">Wait for recipe suggestions to be generated...</msg>
+<arg>Wait for recipe suggestions to be generated...</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-02-22T17:44:00.308138" elapsed="0.000342"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2025-02-22T17:44:05.129443" level="INFO">Waited for Element with selector //div[@id='header']/following-sibling::div/child::*[1] at state visible</msg>
+<arg>${SUITE_LOCATOR_SUGGESTED_RECIPES_CONTAINER}/child::*[1]</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2025-02-22T17:44:00.308741" elapsed="4.820866"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-02-22T17:44:05.130016" level="INFO">Recipe suggestions generated.</msg>
+<arg>Recipe suggestions generated.</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-02-22T17:44:05.129825" elapsed="0.000234"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-02-22T17:44:05.130299" level="INFO">Capturing screenshots of generated suggestions...</msg>
+<arg>Capturing screenshots of generated suggestions...</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-02-22T17:44:05.130177" elapsed="0.000160"/>
+</kw>
+<kw name="Get Elements" owner="Browser">
+<msg time="2025-02-22T17:44:05.139355" level="INFO">Found locator('//div[@id=\'header\']/following-sibling::div/child::*').first(),locator('//div[@id=\'header\']/following-sibling::div/child::*').nth(1) Locators successfully.</msg>
+<msg time="2025-02-22T17:44:05.139572" level="INFO">${recipe_suggestions} = ["//div[@id='header']/following-sibling::div/child::* &gt;&gt; nth=0", "//div[@id='header']/following-sibling::div/child::* &gt;&gt; nth=1"]</msg>
+<var>${recipe_suggestions}</var>
+<arg>${SUITE_LOCATOR_SUGGESTED_RECIPES_CONTAINER}/child::*</arg>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns a reference to Playwright [https://playwright.dev/docs/api/class-locator|Locator]
+for all matched elements by ``selector``.</doc>
+<status status="PASS" start="2025-02-22T17:44:05.130462" elapsed="0.009138"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<msg time="2025-02-22T17:44:05.139991" level="INFO">Length is 2.</msg>
+<arg>${recipe_suggestions}</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="PASS" start="2025-02-22T17:44:05.139802" elapsed="0.000231"/>
+</kw>
+<for flavor="IN ENUMERATE">
+<iter>
+<kw name="Take Screenshot" owner="Browser">
+<msg time="2025-02-22T17:44:05.244222" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/generated_recipe_suggestion_0.png" target="_blank"&gt;&lt;img src="browser/screenshot/generated_recipe_suggestion_0.png" width="800px"/&gt;&lt;/a&gt;</msg>
+<arg>generated_recipe_suggestion_${index}</arg>
+<arg>${recipe_suggestion}</arg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<status status="PASS" start="2025-02-22T17:44:05.140439" elapsed="0.103954"/>
+</kw>
+<var name="${index}">0</var>
+<var name="${recipe_suggestion}">//div[@id='header']/following-sibling::div/child::* &gt;&gt; nth=0</var>
+<status status="PASS" start="2025-02-22T17:44:05.140318" elapsed="0.104183"/>
+</iter>
+<iter>
+<kw name="Take Screenshot" owner="Browser">
+<msg time="2025-02-22T17:44:05.339464" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/generated_recipe_suggestion_1.png" target="_blank"&gt;&lt;img src="browser/screenshot/generated_recipe_suggestion_1.png" width="800px"/&gt;&lt;/a&gt;</msg>
+<arg>generated_recipe_suggestion_${index}</arg>
+<arg>${recipe_suggestion}</arg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<status status="PASS" start="2025-02-22T17:44:05.244921" elapsed="0.094704"/>
+</kw>
+<var name="${index}">1</var>
+<var name="${recipe_suggestion}">//div[@id='header']/following-sibling::div/child::* &gt;&gt; nth=1</var>
+<status status="PASS" start="2025-02-22T17:44:05.244685" elapsed="0.095033"/>
+</iter>
+<var>${index}</var>
+<var>${recipe_suggestion}</var>
+<value>@{recipe_suggestions}</value>
+<status status="PASS" start="2025-02-22T17:44:05.140123" elapsed="0.199696"/>
+</for>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-02-22T17:44:05.340283" level="INFO">Generated suggestions screenshots captured.</msg>
+<arg>Generated suggestions screenshots captured.</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-02-22T17:44:05.340077" elapsed="0.000269"/>
+</kw>
+<kw name="Close Browser" owner="Browser">
+<msg time="2025-02-22T17:44:05.381668" level="INFO">Closed browser</msg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-02-22T17:44:05.340523" elapsed="0.041322"/>
+</kw>
+<tag>Positive</tag>
+<tag>Smoke</tag>
+<status status="PASS" start="2025-02-22T17:43:58.835432" elapsed="6.546755"/>
+</test>
+<test id="s1-s1-t2" name="Empty Input Validation" line="50">
+<kw name="Open Recipe Suggestions Page" owner="recipe_suggestions_resources">
+<kw name="New Browser" owner="Browser">
+<msg time="2025-02-22T17:44:05.394899" level="INFO">{"browser": "chromium", "headless": true, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "/media/jiji/eb18153f-9be1-4f06-9fa8-cf63a398e6141/Development/web/recipe-suggester-ai-agent/client-tests/results/browser/traces/temp/ba6992b7-53fd-4a77-a1e0-9075d4582e72"}</msg>
+<msg time="2025-02-22T17:44:05.487223" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":true,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"/media/jiji/eb18153f-9be1-4f06-9fa8-cf63a398e6141/Development/web/recipe-suggester-ai-agent/client-tests/results/browser/traces/temp/ba6992b7-53fd-4a77-a1e0-9075d4582e72"}</msg>
+<arg>chromium</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<status status="PASS" start="2025-02-22T17:44:05.393945" elapsed="0.093469"/>
+</kw>
+<kw name="New Page" owner="Browser">
+<msg time="2025-02-22T17:44:05.603871" level="INFO">Successfully initialized new page object and opened url: http://localhost:8001/</msg>
+<msg time="2025-02-22T17:44:05.603955" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<arg>${GLOBAL_CLIENT_BASE_URL}/</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2025-02-22T17:44:05.487632" elapsed="0.116486"/>
+</kw>
+<status status="PASS" start="2025-02-22T17:44:05.393449" elapsed="0.210797"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-02-22T17:44:05.604658" level="INFO">Verifying input validation...</msg>
+<arg>Verifying input validation...</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-02-22T17:44:05.604469" elapsed="0.000239"/>
+</kw>
+<kw name="Clear Text" owner="Browser">
+<arg>${SUITE_LOCATOR_INGREDIENTS_INPUT}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears the text field found by ``selector``.</doc>
+<status status="PASS" start="2025-02-22T17:44:05.604886" elapsed="0.868916"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-02-22T17:44:06.475104" level="INFO">Cleared ingredients input value</msg>
+<arg>Cleared ingredients input value</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-02-22T17:44:06.474562" elapsed="0.000669"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-02-22T17:44:06.475955" level="INFO">Entering space character using spacebar to the input...</msg>
+<arg>Entering space character using spacebar to the input...</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-02-22T17:44:06.475644" elapsed="0.000401"/>
+</kw>
+<kw name="Focus" owner="Browser">
+<arg>${SUITE_LOCATOR_INGREDIENTS_INPUT}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Moves focus on to the element found by ``selector``.</doc>
+<status status="PASS" start="2025-02-22T17:44:06.476458" elapsed="0.014101"/>
+</kw>
+<kw name="Press Keys" owner="Browser">
+<arg>${SUITE_LOCATOR_INGREDIENTS_INPUT}</arg>
+<arg>Space</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given key combination into element found by ``selector``.</doc>
+<status status="PASS" start="2025-02-22T17:44:06.490947" elapsed="0.016176"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-02-22T17:44:06.507673" level="INFO">Space character entered.</msg>
+<arg>Space character entered.</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-02-22T17:44:06.507430" elapsed="0.000317"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-02-22T17:44:06.508268" level="INFO">Validating that no ingredient was added...</msg>
+<arg>Validating that no ingredient was added...</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-02-22T17:44:06.507996" elapsed="0.000376"/>
+</kw>
+<kw name="Take Screenshot" owner="Browser">
+<msg time="2025-02-22T17:44:06.603672" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/no_ingredient_added.png" target="_blank"&gt;&lt;img src="browser/screenshot/no_ingredient_added.png" width="800px"/&gt;&lt;/a&gt;</msg>
+<arg>no_ingredient_added</arg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<status status="PASS" start="2025-02-22T17:44:06.508726" elapsed="0.095130"/>
+</kw>
+<kw name="Get Element Count" owner="Browser">
+<msg time="2025-02-22T17:44:06.609333" level="INFO">${inputted_ingredients_count} = 0</msg>
+<var>${inputted_ingredients_count}</var>
+<arg>${SUITE_LOCATOR_INPUTTED_INGREDIENTS_CONTAINER}/child::*</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the count of elements found with ``selector``.</doc>
+<status status="PASS" start="2025-02-22T17:44:06.604121" elapsed="0.005273"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2025-02-22T17:44:06.609994" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${inputted_ingredients_count}</arg>
+<arg>0</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2025-02-22T17:44:06.609680" elapsed="0.000411"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-02-22T17:44:06.610498" level="INFO">Validated no ingredient was added.</msg>
+<arg>Validated no ingredient was added.</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-02-22T17:44:06.610297" elapsed="0.000265"/>
+</kw>
+<kw name="Close Browser" owner="Browser">
+<msg time="2025-02-22T17:44:06.640290" level="INFO">Closed browser</msg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-02-22T17:44:06.610774" elapsed="0.029689"/>
+</kw>
+<tag>InputValidation</tag>
+<tag>Negative</tag>
+<status status="PASS" start="2025-02-22T17:44:05.390257" elapsed="1.250436"/>
+</test>
+<test id="s1-s1-t3" name="Numeric Input Validation" line="71">
+<kw name="Open Recipe Suggestions Page" owner="recipe_suggestions_resources">
+<kw name="New Browser" owner="Browser">
+<msg time="2025-02-22T17:44:06.649646" level="INFO">{"browser": "chromium", "headless": true, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "/media/jiji/eb18153f-9be1-4f06-9fa8-cf63a398e6141/Development/web/recipe-suggester-ai-agent/client-tests/results/browser/traces/temp/98d825e7-27c8-4049-ac05-b25d79ea447a"}</msg>
+<msg time="2025-02-22T17:44:06.740972" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":true,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"/media/jiji/eb18153f-9be1-4f06-9fa8-cf63a398e6141/Development/web/recipe-suggester-ai-agent/client-tests/results/browser/traces/temp/98d825e7-27c8-4049-ac05-b25d79ea447a"}</msg>
+<arg>chromium</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<status status="PASS" start="2025-02-22T17:44:06.648980" elapsed="0.092235"/>
+</kw>
+<kw name="New Page" owner="Browser">
+<msg time="2025-02-22T17:44:06.874114" level="INFO">Successfully initialized new page object and opened url: http://localhost:8001/</msg>
+<msg time="2025-02-22T17:44:06.874203" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<arg>${GLOBAL_CLIENT_BASE_URL}/</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2025-02-22T17:44:06.741476" elapsed="0.132910"/>
+</kw>
+<status status="PASS" start="2025-02-22T17:44:06.648568" elapsed="0.225961"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-02-22T17:44:06.875014" level="INFO">Verifying input validation for numeric values...</msg>
+<arg>Verifying input validation for numeric values...</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-02-22T17:44:06.874778" elapsed="0.000308"/>
+</kw>
+<kw name="Clear Text" owner="Browser">
+<arg>${SUITE_LOCATOR_INGREDIENTS_INPUT}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears the text field found by ``selector``.</doc>
+<status status="PASS" start="2025-02-22T17:44:06.875357" elapsed="0.879845"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2025-02-22T17:44:07.756415" level="INFO">Fills the text '12345' in the given field.</msg>
+<arg>${SUITE_LOCATOR_INGREDIENTS_INPUT}</arg>
+<arg>12345</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2025-02-22T17:44:07.755635" elapsed="0.016065"/>
+</kw>
+<kw name="Press Keys" owner="Browser">
+<arg>${SUITE_LOCATOR_INGREDIENTS_INPUT}</arg>
+<arg>Space</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given key combination into element found by ``selector``.</doc>
+<status status="PASS" start="2025-02-22T17:44:07.772187" elapsed="0.030853"/>
+</kw>
+<kw name="Take Screenshot" owner="Browser">
+<msg time="2025-02-22T17:44:07.898901" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/numeric_input_validation.png.png" target="_blank"&gt;&lt;img src="browser/screenshot/numeric_input_validation.png.png" width="800px"/&gt;&lt;/a&gt;</msg>
+<arg>numeric_input_validation.png</arg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<status status="PASS" start="2025-02-22T17:44:07.803365" elapsed="0.095661"/>
+</kw>
+<kw name="Get Element Count" owner="Browser">
+<msg time="2025-02-22T17:44:07.904456" level="INFO">${inputted_ingredients_count} = 0</msg>
+<var>${inputted_ingredients_count}</var>
+<arg>${SUITE_LOCATOR_INPUTTED_INGREDIENTS_CONTAINER}/child::*</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the count of elements found with ``selector``.</doc>
+<status status="PASS" start="2025-02-22T17:44:07.899228" elapsed="0.005295"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2025-02-22T17:44:07.905159" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${inputted_ingredients_count}</arg>
+<arg>0</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2025-02-22T17:44:07.904832" elapsed="0.000427"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-02-22T17:44:07.905718" level="INFO">Numeric values are correctly rejected</msg>
+<arg>Numeric values are correctly rejected</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-02-22T17:44:07.905503" elapsed="0.000298"/>
+</kw>
+<kw name="Close Browser" owner="Browser">
+<msg time="2025-02-22T17:44:07.946788" level="INFO">Closed browser</msg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-02-22T17:44:07.906133" elapsed="0.040829"/>
+</kw>
+<tag>InputValidation</tag>
+<tag>Negative</tag>
+<status status="PASS" start="2025-02-22T17:44:06.645710" elapsed="1.301470"/>
+</test>
+<test id="s1-s1-t4" name="Exceeding Character Limit Input Validation" line="86">
+<kw name="Open Recipe Suggestions Page" owner="recipe_suggestions_resources">
+<kw name="New Browser" owner="Browser">
+<msg time="2025-02-22T17:44:07.974955" level="INFO">{"browser": "chromium", "headless": true, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "/media/jiji/eb18153f-9be1-4f06-9fa8-cf63a398e6141/Development/web/recipe-suggester-ai-agent/client-tests/results/browser/traces/temp/beca5cb2-eb25-4e68-8534-d379fea95dc2"}</msg>
+<msg time="2025-02-22T17:44:08.066024" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":true,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"/media/jiji/eb18153f-9be1-4f06-9fa8-cf63a398e6141/Development/web/recipe-suggester-ai-agent/client-tests/results/browser/traces/temp/beca5cb2-eb25-4e68-8534-d379fea95dc2"}</msg>
+<arg>chromium</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<status status="PASS" start="2025-02-22T17:44:07.974154" elapsed="0.092020"/>
+</kw>
+<kw name="New Page" owner="Browser">
+<msg time="2025-02-22T17:44:08.179817" level="INFO">Successfully initialized new page object and opened url: http://localhost:8001/</msg>
+<msg time="2025-02-22T17:44:08.179889" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<arg>${GLOBAL_CLIENT_BASE_URL}/</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2025-02-22T17:44:08.066332" elapsed="0.113689"/>
+</kw>
+<status status="PASS" start="2025-02-22T17:44:07.973646" elapsed="0.206500"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-02-22T17:44:08.180659" level="INFO">Verifying input validation for exceeding character limit...</msg>
+<arg>Verifying input validation for exceeding character limit...</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-02-22T17:44:08.180392" elapsed="0.000327"/>
+</kw>
+<kw name="Clear Text" owner="Browser">
+<arg>${SUITE_LOCATOR_INGREDIENTS_INPUT}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears the text field found by ``selector``.</doc>
+<status status="PASS" start="2025-02-22T17:44:08.180917" elapsed="0.866736"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-02-22T17:44:09.049806" level="INFO">${long_ingredient} = aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa...</msg>
+<var>${long_ingredient}</var>
+<arg>"a" * 256</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-02-22T17:44:09.048642" elapsed="0.001289"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2025-02-22T17:44:09.051948" level="INFO">Fills the text 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' in the given field.</msg>
+<arg>${SUITE_LOCATOR_INGREDIENTS_INPUT}</arg>
+<arg>${long_ingredient}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2025-02-22T17:44:09.050470" elapsed="0.017257"/>
+</kw>
+<kw name="Press Keys" owner="Browser">
+<arg>${SUITE_LOCATOR_INGREDIENTS_INPUT}</arg>
+<arg>Space</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given key combination into element found by ``selector``.</doc>
+<status status="PASS" start="2025-02-22T17:44:09.068097" elapsed="0.026820"/>
+</kw>
+<kw name="Take Screenshot" owner="Browser">
+<msg time="2025-02-22T17:44:09.203041" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/exceeding_character_limit_input_validation.png" target="_blank"&gt;&lt;img src="browser/screenshot/exceeding_character_limit_input_validation.png" width="800px"/&gt;&lt;/a&gt;</msg>
+<arg>exceeding_character_limit_input_validation</arg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<status status="PASS" start="2025-02-22T17:44:09.095321" elapsed="0.107853"/>
+</kw>
+<kw name="Get Element Count" owner="Browser">
+<msg time="2025-02-22T17:44:09.208615" level="INFO">${inputted_ingredients_count} = 0</msg>
+<var>${inputted_ingredients_count}</var>
+<arg>${SUITE_LOCATOR_INPUTTED_INGREDIENTS_CONTAINER}/child::*</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the count of elements found with ``selector``.</doc>
+<status status="PASS" start="2025-02-22T17:44:09.203417" elapsed="0.005255"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2025-02-22T17:44:09.209193" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${inputted_ingredients_count}</arg>
+<arg>0</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2025-02-22T17:44:09.208937" elapsed="0.000327"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-02-22T17:44:09.209617" level="INFO">Exceeding character limit is correctly rejected</msg>
+<arg>Exceeding character limit is correctly rejected</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-02-22T17:44:09.209467" elapsed="0.000200"/>
+</kw>
+<kw name="Close Browser" owner="Browser">
+<msg time="2025-02-22T17:44:09.243670" level="INFO">Closed browser</msg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-02-22T17:44:09.209817" elapsed="0.034075"/>
+</kw>
+<tag>InputValidation</tag>
+<tag>Negative</tag>
+<status status="PASS" start="2025-02-22T17:44:07.970299" elapsed="1.273844"/>
+</test>
+<test id="s1-s1-t5" name="Special Characters Input Validation" line="102">
+<kw name="Open Recipe Suggestions Page" owner="recipe_suggestions_resources">
+<kw name="New Browser" owner="Browser">
+<msg time="2025-02-22T17:44:09.252717" level="INFO">{"browser": "chromium", "headless": true, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "/media/jiji/eb18153f-9be1-4f06-9fa8-cf63a398e6141/Development/web/recipe-suggester-ai-agent/client-tests/results/browser/traces/temp/73fe7294-8799-4565-8a1a-91f60c7e30be"}</msg>
+<msg time="2025-02-22T17:44:09.342434" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":true,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"/media/jiji/eb18153f-9be1-4f06-9fa8-cf63a398e6141/Development/web/recipe-suggester-ai-agent/client-tests/results/browser/traces/temp/73fe7294-8799-4565-8a1a-91f60c7e30be"}</msg>
+<arg>chromium</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<status status="PASS" start="2025-02-22T17:44:09.252022" elapsed="0.090616"/>
+</kw>
+<kw name="New Page" owner="Browser">
+<msg time="2025-02-22T17:44:09.457236" level="INFO">Successfully initialized new page object and opened url: http://localhost:8001/</msg>
+<msg time="2025-02-22T17:44:09.457322" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<arg>${GLOBAL_CLIENT_BASE_URL}/</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2025-02-22T17:44:09.342863" elapsed="0.114623"/>
+</kw>
+<status status="PASS" start="2025-02-22T17:44:09.251633" elapsed="0.205977"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-02-22T17:44:09.457998" level="INFO">Verifying input validation for special characters...</msg>
+<arg>Verifying input validation for special characters...</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-02-22T17:44:09.457811" elapsed="0.000233"/>
+</kw>
+<kw name="Clear Text" owner="Browser">
+<arg>${SUITE_LOCATOR_INGREDIENTS_INPUT}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears the text field found by ``selector``.</doc>
+<status status="PASS" start="2025-02-22T17:44:09.458194" elapsed="0.839910"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2025-02-22T17:44:10.298935" level="INFO">Fills the text '!@#$%^&amp;*' in the given field.</msg>
+<arg>${SUITE_LOCATOR_INGREDIENTS_INPUT}</arg>
+<arg>!@#$%^&amp;*</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2025-02-22T17:44:10.298401" elapsed="0.010016"/>
+</kw>
+<kw name="Press Keys" owner="Browser">
+<arg>${SUITE_LOCATOR_INGREDIENTS_INPUT}</arg>
+<arg>Space</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given key combination into element found by ``selector``.</doc>
+<status status="PASS" start="2025-02-22T17:44:10.308700" elapsed="0.024030"/>
+</kw>
+<kw name="Take Screenshot" owner="Browser">
+<msg time="2025-02-22T17:44:10.433119" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/special_characters_input_validation.png" target="_blank"&gt;&lt;img src="browser/screenshot/special_characters_input_validation.png" width="800px"/&gt;&lt;/a&gt;</msg>
+<arg>special_characters_input_validation</arg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<status status="PASS" start="2025-02-22T17:44:10.333160" elapsed="0.100107"/>
+</kw>
+<kw name="Get Element Count" owner="Browser">
+<msg time="2025-02-22T17:44:10.437403" level="INFO">${inputted_ingredients_count} = 0</msg>
+<var>${inputted_ingredients_count}</var>
+<arg>${SUITE_LOCATOR_INPUTTED_INGREDIENTS_CONTAINER}/child::*</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the count of elements found with ``selector``.</doc>
+<status status="PASS" start="2025-02-22T17:44:10.433485" elapsed="0.003977"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2025-02-22T17:44:10.437961" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${inputted_ingredients_count}</arg>
+<arg>0</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2025-02-22T17:44:10.437698" elapsed="0.000331"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-02-22T17:44:10.438328" level="INFO">Special characters are correctly rejected</msg>
+<arg>Special characters are correctly rejected</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-02-22T17:44:10.438187" elapsed="0.000199"/>
+</kw>
+<kw name="Close Browser" owner="Browser">
+<msg time="2025-02-22T17:44:10.472667" level="INFO">Closed browser</msg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-02-22T17:44:10.438593" elapsed="0.034263"/>
+</kw>
+<tag>InputValidation</tag>
+<tag>Negative</tag>
+<status status="PASS" start="2025-02-22T17:44:09.248822" elapsed="1.224255"/>
+</test>
+<doc>Test suite for recipe suggestion functionality</doc>
+<status status="PASS" start="2025-02-22T17:43:58.728201" elapsed="11.750758"/>
+</suite>
+<status status="PASS" start="2025-02-22T17:43:58.710197" elapsed="11.773816"/>
+</suite>
+<statistics>
+<total>
+<stat pass="5" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="4" fail="0" skip="0">InputValidation</stat>
+<stat pass="4" fail="0" skip="0">Negative</stat>
+<stat pass="1" fail="0" skip="0">Positive</stat>
+<stat pass="1" fail="0" skip="0">Smoke</stat>
+</tag>
+<suite>
+<stat name="Suites" id="s1" pass="5" fail="0" skip="0">Suites</stat>
+<stat name="Recipe Suggestions" id="s1-s1" pass="5" fail="0" skip="0">Suites.Recipe Suggestions</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
