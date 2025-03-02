@@ -18,7 +18,7 @@ Initialize
 
 *** Test Cases ***
 Add Ingredients and Generate Suggestions
-    [Tags]    Smoke    Positive
+    [Tags]    regression    smoke    positive
     Open Recipe Suggestions Page
 
     Log    Inputing ingredients...
@@ -48,7 +48,7 @@ Add Ingredients and Generate Suggestions
     Close Browser
 
 Empty Input Validation
-    [Tags]    Negative    InputValidation
+    [Tags]    smoke    negative
     Open Recipe Suggestions Page
     
     Log    Verifying input validation...
@@ -69,7 +69,7 @@ Empty Input Validation
     Close Browser
     
 Numeric Input Validation
-    [Tags]    Negative    InputValidation
+    [Tags]    negative
     Open Recipe Suggestions Page
     
     Log    Verifying input validation for numeric values...
@@ -84,7 +84,7 @@ Numeric Input Validation
     Close Browser
 
 Exceeding Character Limit Input Validation
-    [Tags]    Negative    InputValidation
+    [Tags]    negative
     Open Recipe Suggestions Page
     
     Log    Verifying input validation for exceeding character limit...
@@ -100,7 +100,7 @@ Exceeding Character Limit Input Validation
     Close Browser
 
 Special Characters Input Validation
-    [Tags]    Negative    InputValidation
+    [Tags]    negative
     Open Recipe Suggestions Page
     
     Log    Verifying input validation for special characters...
